@@ -1,18 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Author } from '../../authors/entities/author.entity';
 
 @Entity()
 export class Book {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
+  @Column({ nullable: true })
   title: string;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 
-  @Column({ unique: true })
-  code: string;
+  @Column({ nullable: true })
+  codeId: string;
 
   @Column({ nullable: true })
   author: string;
@@ -23,6 +24,6 @@ export class Book {
   @Column({ nullable: true })
   publicationDate: string;
 
-  @Column({ nullable: true })
-  authorId: string;
+  @ManyToMany(() => Author, (author) => author.books)
+  authors: Author[];
 }
