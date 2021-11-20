@@ -1,13 +1,13 @@
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+/api/npm-debug.log*
+/api/yarn-debug.log*
+/api/yarn-error.log*
+/api/lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+/api/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Runtime data
 pids
@@ -35,10 +35,10 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+/api/build/Release
 
 # Dependency directories
-node_modules/
+/api/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -48,10 +48,10 @@ typings/
 *.tsbuildinfo
 
 # Optional npm cache directory
-.npm
+/api/.npm
 
 # Optional eslint cache
-.eslintcache
+/api/.eslintcache
 
 # Microbundle cache
 .rpt2_cache/
@@ -69,18 +69,18 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
+/api/.env
+/api/.env.test
 
 # parcel-bundler cache (https://parceljs.org/)
-.cache
+/api/.cache
 
 # Next.js build output
 .next
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+/api/dist
 
 # Gatsby files
 .cache/
@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# DB
+/api/db
+
+#Idea
+.idea
