@@ -2,32 +2,37 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
-  ManyToMany,
-  JoinTable,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm';
-import { Book } from '../../books/entities/book.entity';
+import User from '../../users/entities/user.entity';
+import Book from '../../books/entities/book.entity';
 
 @Entity()
-export class Author {
+class Author {
   @PrimaryGeneratedColumn()
-  id: string;
+  public id: number;
 
   @Column({ nullable: true })
-  firstName: string;
+  public firstName: string;
 
   @Column({ nullable: true })
-  lastName: string;
+  public lastName: string;
 
   @Column({ nullable: true })
-  birthDate: string;
+  public birthDate: string;
 
   @Column({ nullable: true })
-  countryOfBirth: string;
+  public countryOfBirth: string;
 
   @Column({ nullable: true })
-  description: string;
+  public description: string;
 
-  @ManyToMany(() => Book, (book) => book.authors)
-  @JoinTable()
-  books: Book[];
+  @OneToMany(() => Book, (book: Book) => book.author)
+  public books: Book[];
+
+  @ManyToOne(() => User, (user: User) => user.authors)
+  public user: User;
 }
+
+export default Author;

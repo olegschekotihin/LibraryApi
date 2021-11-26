@@ -1,29 +1,35 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
-import { Author } from '../../authors/entities/author.entity';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import User from '../../users/entities/user.entity';
+import Author from '../../authors/entities/author.entity';
 
 @Entity()
-export class Book {
+class Book {
   @PrimaryGeneratedColumn()
-  id: string;
+  public id: number;
 
   @Column({ nullable: true })
-  title: string;
+  public title: string;
 
   @Column({ nullable: true })
-  description: string;
+  public description: string;
 
   @Column({ nullable: true })
-  codeId: string;
+  public codeId: string;
 
   @Column({ nullable: true })
-  author: string;
+  public author: string;
 
   @Column({ nullable: true })
-  pagesCount: string;
+  public pagesCount: string;
 
   @Column({ nullable: true })
-  publicationDate: string;
+  public publicationDate: string;
 
-  @ManyToMany(() => Author, (author) => author.books)
-  authors: Author[];
+  @ManyToOne(() => Author, (author: Author) => author.books)
+  public authorInfo: Author;
+
+  @ManyToOne(() => User, (user: User) => user.books)
+  public user: User;
 }
+
+export default Book;

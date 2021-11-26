@@ -15,6 +15,7 @@ import { ApiOperation } from '@nestjs/swagger';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
   @ApiOperation({ summary: 'Create User' })
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -25,6 +26,18 @@ export class UsersController {
   @Get()
   showAll() {
     return this.usersService.findAll();
+  }
+
+  @ApiOperation({ summary: 'Get all books for this user' })
+  @Get('/getBooks/:id')
+  showAllBooks(@Param('id') id: string) {
+    return this.usersService.readUser(+id);
+  }
+
+  @ApiOperation({ summary: 'Get all authors for this user' })
+  @Get('/getAuthors/:id')
+  showAllAuthors(@Param('id') id: string) {
+    return this.usersService.readAuthor(+id);
   }
 
   @ApiOperation({ summary: 'Check User' })
